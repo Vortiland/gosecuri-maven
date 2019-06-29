@@ -28,10 +28,10 @@ public class FireBaseDao {
 
 			public void onDataChange(DataSnapshot snapshot) {
 				try {
-					System.out.println("found {} "+ snapshot.child("characters").getChildrenCount());
+					System.out.println("found {} "+ snapshot.child("equipement").getChildrenCount());
 					String string = snapshot.toString();
 
-					for (DataSnapshot postSnapshot: snapshot.child("characters").getChildren()) {
+					for (DataSnapshot postSnapshot: snapshot.child("equipement").getChildren()) {
 						Object character = postSnapshot.getValue(Object.class);
 						System.out.println("--> " + character.toString());
 						result.add(character);
