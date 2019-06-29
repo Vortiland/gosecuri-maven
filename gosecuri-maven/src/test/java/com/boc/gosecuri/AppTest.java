@@ -1,4 +1,4 @@
-package gosecuri_maven.gosecuri_maven;
+package com.boc.gosecuri;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
