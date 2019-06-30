@@ -7,8 +7,10 @@ import java.io.InputStream;
 import java.util.Base64;
 
 import com.google.auth.oauth2.GoogleCredentials;
+import com.google.cloud.firestore.Firestore;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
+import com.google.firebase.cloud.FirestoreClient;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -34,9 +36,10 @@ public class FirebaseUtil {
 		return instance;
 	}
 	
-	public DatabaseReference firebaseDatabase() {
-		DatabaseReference firebase = FirebaseDatabase.getInstance().getReference();
-		return firebase;
+	public Firestore firebaseDatabase() {
+		Firestore db = FirestoreClient.getFirestore();
+		return db;
+	
 	}
 	
 	private void init() throws TechnicalException {
@@ -45,7 +48,7 @@ public class FirebaseUtil {
 			FirebaseOptions options = new FirebaseOptions.Builder()
 					.setCredentials(
 							GoogleCredentials.fromStream(firebaseKey()))
-					.setDatabaseUrl("https://java-un-epsi-b3.firebaseio.com").build();
+					.build();
 			  if(FirebaseApp.getApps().isEmpty()) { 
 					FirebaseApp.initializeApp(options);
 	            }
